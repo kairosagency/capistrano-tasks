@@ -1,3 +1,8 @@
+module Capistrano
+  class FileNotFound < StandardError
+  end
+end
+
 namespace :phpfpm do
   desc "Restart php fpm"
   task :restart do

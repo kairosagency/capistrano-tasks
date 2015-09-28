@@ -1,3 +1,7 @@
+module Capistrano
+  class FileNotFound < StandardError
+  end
+end
 
 def absolute_writable_paths
   linked_dirs = fetch(:linked_dirs)

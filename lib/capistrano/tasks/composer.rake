@@ -1,3 +1,9 @@
+module Capistrano
+  class FileNotFound < StandardError
+  end
+end
+
+
 namespace :composer do
 
 desc <<-DESC

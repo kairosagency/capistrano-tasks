@@ -1,3 +1,8 @@
+module Capistrano
+  class FileNotFound < StandardError
+  end
+end
+
 namespace :react do
   desc "React compile and minify"
   task :build do
