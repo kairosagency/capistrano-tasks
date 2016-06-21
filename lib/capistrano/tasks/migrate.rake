@@ -6,9 +6,11 @@ end
 namespace :phpmigration do
   desc "php migration commands (List/Status/Migrate/Rollback/Up/Down)"
 
+  set :migration_current_path, -> { "#{current_path}" }
+
   task :list do
     on roles(:web) do
-      execute "#{fetch(:current_path)}vendor/bin/phpmig list"
+      execute "#{fetch(:migration_current_path)}vendor/bin/phpmig list"
     end
   end
 
