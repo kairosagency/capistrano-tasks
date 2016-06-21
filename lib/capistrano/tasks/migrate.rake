@@ -13,9 +13,9 @@ namespace :phpmigration do
   end
 
   task :status do
-    on roles(:web) do
+    #on roles(:web) do
       execute "#{fetch(:current_path)}vendor/bin/phpmig status -b #{fetch(:current_path)}phpmig-#{fetch(:app_environment)}.php"
-    end
+    #end
   end
 
   task :migrate do
