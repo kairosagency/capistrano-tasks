@@ -10,39 +10,39 @@ namespace :phpmigration do
 
   task :list do
     on roles(:web) do
-      execute "#{fetch(:migration_current_path)}vendor/bin/phpmig list"
+      execute "#{fetch(:migration_current_path)}/vendor/bin/phpmig list"
     end
   end
 
   task :status do
-    on roles(:app) do
-      execute "#{fetch(:current_path)}vendor/bin/phpmig status -b #{fetch(:current_path)}phpmig-#{fetch(:app_environment)}.php"
+    on roles(:web) do
+      execute "#{fetch(:migration_current_path)}/vendor/bin/phpmig status -b #{fetch(:migration_current_path)}/phpmig-#{fetch(:app_environment)}.php"
     end
   end
 
   task :migrate do
     on roles(:web) do
-      execute "#{fetch(:current_path)}vendor/bin/phpmig migrate -b #{fetch(:current_path)}phpmig-#{fetch(:app_environment)}.php"
+      execute "#{fetch(:migration_current_path)}/vendor/bin/phpmig migrate -b #{fetch(:migration_current_path)}/phpmig-#{fetch(:app_environment)}.php"
     end
   end
 
   task :rollback do
     on roles(:web) do
-      execute "#{fetch(:current_path)}vendor/bin/phpmig roolback -b #{fetch(:current_path)}phpmig-#{fetch(:app_environment)}.php"
+      execute "#{fetch(:migration_current_path)}/vendor/bin/phpmig roolback -b #{fetch(:migration_current_path)}/phpmig-#{fetch(:app_environment)}.php"
     end
   end
 
   task :up do
     set :version, ask("What version do you need to up?", nil)
     on roles(:web) do
-      execute "#{fetch(:current_path)}vendor/bin/phpmig up -b #{fetch(:current_path)}phpmig-#{fetch(:app_environment)}.php #{fetch(:version)}"
+      execute "#{fetch(:migration_current_path)}/vendor/bin/phpmig up -b #{fetch(:migration_current_path)}/phpmig-#{fetch(:app_environment)}.php #{fetch(:version)}"
     end
   end
 
   task :down do
     set :version, ask("What version do you need to down?", nil)
     on roles(:web) do
-      execute "#{fetch(:current_path)}vendor/bin/phpmig down -b #{fetch(:current_path)}phpmig-#{fetch(:app_environment)}.php #{fetch(:version)}"
+      execute "#{fetch(:migration_current_path)}/vendor/bin/phpmig down -b #{fetch(:migration_current_path)}/phpmig-#{fetch(:app_environment)}.php #{fetch(:version)}"
     end
   end
 end
