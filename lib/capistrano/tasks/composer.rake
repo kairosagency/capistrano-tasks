@@ -13,7 +13,7 @@ desc <<-DESC
   task :check do
     on release_roles(fetch(:composer_roles)) do
       info "Testing if composer is installed globally"
-      if test "[[ -n `which composer` ]]"
+      if not test "[[ -n `which composer` ]]"
         invoke 'composer:install_executable'
       end
     end
