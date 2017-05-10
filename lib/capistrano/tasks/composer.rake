@@ -15,6 +15,8 @@ desc <<-DESC
       info "Testing if composer is installed globally"
       if not test "[[ -n `which composer` ]]"
         invoke 'composer:install_executable'
+      else
+        set :composer_use_global, true
       end
     end
   end
