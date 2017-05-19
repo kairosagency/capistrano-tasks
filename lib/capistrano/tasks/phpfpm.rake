@@ -7,7 +7,11 @@ namespace :phpfpm do
   desc "Restart php fpm"
   task :restart do
     on roles(:web) do
-      execute :sudo, :service, "php5-fpm restart"
+      unless fetch(:php_version) do
+        set :php_version, "5"
+      end
+
+      execute :sudo, :service, "php" + fetch(:php_version) + "-fpm restart"
     end
   end
 end
