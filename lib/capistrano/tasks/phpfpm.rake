@@ -7,7 +7,7 @@ namespace :phpfpm do
   desc "Restart php fpm"
   task :restart do
     on roles(:web) do
-      unless fetch(:php_version) do
+      unless fetch(:php_version)
         set :php_version, "5"
       end
 
