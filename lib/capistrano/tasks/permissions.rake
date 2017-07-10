@@ -13,7 +13,7 @@ end
 namespace :permissions do
   desc "Set permissions"
   task :set do
-    set :fixpermissions, ask('Do you want to fix folder permissions ?', 'y|n')
+    set :fixpermissions, ask('Do you want to fix folder permissions ? y|n', 'y')
     next unless fetch(:fixpermissions) == 'y'
     on roles(:web) do
       info "Fixing permissions ..."
