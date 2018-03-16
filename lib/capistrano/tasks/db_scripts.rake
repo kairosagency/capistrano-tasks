@@ -9,7 +9,7 @@ namespace :db_scripts do
   
   task :sync_db do
     run_locally do
-      git remote_db_password = capture('echo $REMOTE_DB_PASSWORD')
+      remote_db_password = capture('echo $REMOTE_DB_PASSWORD')
       set :remote_db_password, -> { "#{remote_db_password}" }
     end
 
