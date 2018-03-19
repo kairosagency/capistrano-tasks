@@ -13,7 +13,7 @@ namespace :db_scripts do
       set :remote_db_password, -> { "#{remote_db_password}" }
     end
 
-    on roles(:web) do
+    on roles(:db) do
       execute "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
     end
   end
