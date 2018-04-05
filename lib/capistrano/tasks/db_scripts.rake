@@ -14,7 +14,9 @@ namespace :db_scripts do
     end
 
     on roles(:db) do
-      execute "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
+      as 'postgres' do
+        execute "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
+      end
     end
   end
 end
