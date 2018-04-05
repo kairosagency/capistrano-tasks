@@ -15,6 +15,7 @@ namespace :db_scripts do
 
     on roles(:db) do
       as 'postgres' do
+        execute 'whoami'
         execute "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
       end
     end
