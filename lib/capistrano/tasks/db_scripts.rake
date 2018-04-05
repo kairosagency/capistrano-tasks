@@ -15,9 +15,10 @@ namespace :db_scripts do
 
     on roles(:db) do
       as 'postgres' do
-        execute :whoami
+        # just checks the user for debug
+        execute :whoami 
+        # this ways it executes as postgres user
         execute :bash, "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
-        execute "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
       end
     end
   end
