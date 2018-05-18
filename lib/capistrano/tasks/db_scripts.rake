@@ -18,7 +18,11 @@ namespace :db_scripts do
         # just checks the user for debug
         execute :whoami 
         # this ways it executes as postgres user
-        execute :bash, "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
+        if fetch(:phpmig_conf) != nil 
+          execute :bash, "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)} -c #{fetch(:phpmig_conf)}"
+        else 
+          execute :bash, "#{fetch(:db_scripts_path)}/sync_prod_db.sh -e #{fetch(:app_environment)} -P #{fetch(:remote_db_password)}"
+        end
       end
     end
   end
