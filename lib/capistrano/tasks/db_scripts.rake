@@ -10,8 +10,8 @@ namespace :db_scripts do
   task :sync_db do
     run_locally do
       # read db password env var
-      ask(:remote_db_password, "default_database_name")
-      ENV['REMOTE_DB_PASSWORD']=fetch(:remote_db_password)
+      #ask(:remote_db_password, "default_database_name")
+      #ENV['REMOTE_DB_PASSWORD']=fetch(:remote_db_password)
     end
 
     on roles(:db) do
